@@ -1,0 +1,19 @@
+# Cache e arquivos gerados pelo Gradle
+.gradle/
+build/
+
+# Arquivos gerados pelo sistema ou IDEs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+out/
+bin/
+
+# Arquivos de log
+*.log
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
