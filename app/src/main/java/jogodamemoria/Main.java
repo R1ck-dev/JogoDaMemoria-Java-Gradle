@@ -101,6 +101,8 @@ public class Main {
 
                                     if (allFound) {
                                         System.out.println("Parabéns! Você encontrou todos os pares!");
+                                        System.out.println("Jogo finalizado em " + (game.getRounds() + 1) + " rodadas.");
+                                        deleteGameSave(game.getGameName());
                                         runningSubMenu = false;
                                     }
                                 } else {
@@ -132,7 +134,7 @@ public class Main {
                     Game loadedGame = loadGameFromFile(selectedGame + ".txt");
                     List<String> savedCards = cardHolder(selectedGame + ".txt");
 
-                    System.out.println("Jogo carregado! Continuando de onde parou...");
+                    System.out.println("Continuando de onde parou");
                     System.out.println("Coleção: " + loadedGame.getUsedCollection());
                     System.out.println("Rounds jogados: " + loadedGame.getRounds());
 
@@ -187,6 +189,8 @@ public class Main {
 
                                     if (allFound) {
                                         System.out.println("Parabéns! Você encontrou todos os pares!");
+                                        System.out.println("Jogo finalizado em " + (loadedGame.getRounds() + 1) + " rodadas.");
+                                        deleteGameSave(loadedGame.getGameName());
                                         runningSubMenu = false;
                                     }
                                 } else {
@@ -328,5 +332,13 @@ public class Main {
         game.setGameState(true);
 
         return game;
+    }
+
+    public static void deleteGameSave(String gameFileName) throws IOException {
+        Path filePath = Path.of("app/src/main/java/jogodamemoria/games/" + gameFileName);
+        if (Files.exists(filePath)) {
+            Files.delete(filePath);
+            System.out.println("Jogo salvo deletado com sucesso: " + gameFileName);
+        }
     }
 }
